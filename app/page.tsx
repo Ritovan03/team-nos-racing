@@ -15,7 +15,14 @@ import { InteractiveParticles } from "@/components/interactive-particles"
 import { RacingLines } from "@/components/racing-lines"
 import { InteractiveCar } from "@/components/interactive-car"
 import { SpeedTest } from "@/components/speed-test"
+import dynamic from 'next/dynamic'
 import LeafletMapWithMarker from "@/components/LeafletMapWithMarker";
+
+// Dynamic import for the map component to prevent SSR issues
+const Map = dynamic(
+  () => import('@/components/LeafletMapWithMarker').then(mod => mod.LeafletMapWithMarker),
+  { ssr: false }
+)
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -530,7 +537,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
-  <LeafletMapWithMarker />
+              <Map />
 </div>
 
 
