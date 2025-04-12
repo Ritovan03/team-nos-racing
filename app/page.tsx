@@ -1,32 +1,45 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { ModeToggle } from "@/components/mode-toggle"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Instagram, Mail, MapPin, Phone, Zap, Shield, Gauge } from "lucide-react"
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { MobileMenu } from "@/components/mobile-menu"
-import { FuturisticCard } from "@/components/futuristic-card"
-import { InteractiveParticles } from "@/components/interactive-particles"
-import { RacingLines } from "@/components/racing-lines"
-import { InteractiveCar } from "@/components/interactive-car"
-import { SpeedTest } from "@/components/speed-test"
-import dynamic from 'next/dynamic'
+import Link from "next/link";
+import Image from "next/image";
+import { ModeToggle } from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+  Zap,
+  Shield,
+  Gauge,
+} from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { MobileMenu } from "@/components/mobile-menu";
+import { FuturisticCard } from "@/components/futuristic-card";
+import { InteractiveParticles } from "@/components/interactive-particles";
+import { RacingLines } from "@/components/racing-lines";
+import { InteractiveCar } from "@/components/interactive-car";
+import { SpeedTest } from "@/components/speed-test";
+import dynamic from "next/dynamic";
 import LeafletMapWithMarker from "@/components/LeafletMapWithMarker";
 
 // Dynamic import for the map component to prevent SSR issues
 const Map = dynamic(
-  () => import('@/components/LeafletMapWithMarker').then(mod => mod.LeafletMapWithMarker),
+  () =>
+    import("@/components/LeafletMapWithMarker").then(
+      (mod) => mod.LeafletMapWithMarker
+    ),
   { ssr: false }
-)
+);
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState<"view" | "interact" | "specs">("view")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"view" | "interact" | "specs">(
+    "view"
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -45,18 +58,18 @@ export default function Home() {
           </div>
 
           {/* Desktop Navigation */}
-<nav className="hidden md:flex items-center gap-8">
-  {["About", "Our Car", "Sponsors", "Contact"].map((item, index) => (
-    <Link
-      key={index}
-      href={`#${item.toLowerCase().replace(" ", "")}`}
-      className="group relative text-sm font-medium transition-colors hover:text-primary"
-    >
-      <span className="relative z-10">{item}</span>
-      <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
-    </Link>
-  ))}
-</nav>
+          <nav className="hidden md:flex items-center gap-8">
+            {["About", "Our Car", "Sponsors", "Contact"].map((item, index) => (
+              <Link
+                key={index}
+                href={`#${item.toLowerCase().replace(" ", "")}`}
+                className="group relative text-sm font-medium transition-colors hover:text-primary"
+              >
+                <span className="relative z-10">{item}</span>
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            ))}
+          </nav>
 
           {/* Mobile Navigation Toggle */}
           <button
@@ -86,7 +99,10 @@ export default function Home() {
       </header>
 
       {/* Mobile Menu */}
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
 
       <main className="flex-1">
         {/* Hero Section with enhanced animations */}
@@ -110,7 +126,9 @@ export default function Home() {
               className="relative mb-6"
             >
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-primary/50 to-primary/30 opacity-70 blur"></div>
-              <h1 className="relative text-5xl md:text-7xl font-extrabold tracking-tight">TEAM NOS RACING</h1>
+              <h1 className="relative text-5xl md:text-7xl font-extrabold tracking-tight">
+                TEAM NOS RACING
+              </h1>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -118,7 +136,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl text-muted-foreground max-w-[700px] mb-10"
             >
-              Pushing the boundaries of speed, innovation, and precision in F1 in Schools
+              Pushing the boundaries of speed, innovation, and precision in F1
+              in Schools
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -126,17 +145,36 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="gap-2 relative overflow-hidden group">
+              <Link
+                href="https://www.canva.com/design/DAGhoeEojR0/N7bkRxnyRHu1QMtC6L21bg/view?utm_content=DAGhoeEojR0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7f2631c4d9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="gap-2 relative overflow-hidden group"
+                >
                   <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-primary/80 transition-all duration-300 transform group-hover:translate-x-full opacity-30"></span>
-                  <Instagram className="h-5 w-5" />
-                  Follow Our Journey
+                  Team Management Portfolio
                 </Button>
               </Link>
               <Link href="#speedtest">
                 <Button size="lg" variant="outline" className="gap-2">
                   <Gauge className="h-5 w-5" />
                   Test Your Speed
+                </Button>
+              </Link>
+              <Link
+                href="https://www.canva.com/design/DAGaZsXciIQ/8LFQGj-R9reeE423iEzFCA/view?utm_content=DAGaZsXciIQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb9748a29af "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="gap-2 relative overflow-hidden group"
+                >
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-primary/80 transition-all duration-300 transform group-hover:translate-x-full opacity-30"></span>
+                  Engineering Portfolio
                 </Button>
               </Link>
             </motion.div>
@@ -146,24 +184,49 @@ export default function Home() {
         {/* About Us section */}
         <section id="about" className="py-20 bg-muted/50">
           <div className="container">
-            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">About Us</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">
+              About Us
+            </h2>
             <div className="max-w-3xl mx-auto mb-16">
               <p className="text-lg text-muted-foreground text-center">
-                Team NOS Racing is a dedicated group of students passionate about engineering, design, and motorsport.
-                We compete in F1 in Schools, the world's largest STEM competition, where we design, analyze,
-                manufacture, and race miniature F1 cars. Our mission is to innovate, inspire, and excel in every aspect
-                of the competition.
+                Team NOS Racing is a dedicated group of students passionate
+                about engineering, design, and motorsport. We compete in F1 in
+                Schools, the world's largest STEM competition, where we design,
+                analyze, manufacture, and race miniature F1 cars. Our mission is
+                to innovate, inspire, and excel in every aspect of the
+                competition.
               </p>
             </div>
 
-            <h3 className="text-2xl font-bold mb-8 text-center">Meet the Team</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center">
+              Meet the Team
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { name: "Prem Divekar", role: "Team Manager", avatar: "AJ" },
-                { name: "Dharya Sharma", role: "Design and Manufacturing Engineer", avatar: "SR" },
-                { name: "Sushmita Dasgupta", role: "Graphic Designer", avatar: "TK" },
-                { name: "Dnyanda Kale", role: "Finance & Sponsorship Lead", avatar: "JS" },
-                { name: "Mihika Nair", role: "Resources Manager", avatar: "CW" },
+                {
+                  name: "Prem Divekar",
+                  role: "Team Manager",
+                  avatar: "AJ",
+                  image: "/team/1.png", // Fixed path
+                },
+                {
+                  name: "Dharya Sharma",
+                  role: "Design and Manufacturing Engineer",
+                  avatar: "SR",
+                  image: "/team/2.png", // Fixed path
+                },
+                {
+                  name: "Sushmita Dasgupta",
+                  role: "Graphic Designer",
+                  avatar: "TK",
+                  image: "/team/3.png", // Fixed path
+                },
+                {
+                  name: "Dnyanda Kale",
+                  role: "Finance & Sponsorship Lead",
+                  avatar: "JS",
+                  image: "/team/4.png", // Fixed path
+                },
               ].map((member, index) => (
                 <motion.div
                   key={index}
@@ -177,12 +240,22 @@ export default function Home() {
                       <div className="mb-4 relative">
                         <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 to-primary/10 opacity-0 group-hover:opacity-100 blur transition-opacity duration-700"></div>
                         <Avatar className="h-20 w-20 relative">
-                          <AvatarImage src={`/placeholder.svg?height=80&width=80`} alt={member.name} />
-                          <AvatarFallback className="text-lg">{member.avatar}</AvatarFallback>
+                          <AvatarImage
+                            src={
+                              member.image ||
+                              `/placeholder.svg?height=80&width=80`
+                            }
+                            alt={member.name}
+                          />
+                          <AvatarFallback className="text-lg">
+                            {member.avatar}
+                          </AvatarFallback>
                         </Avatar>
                       </div>
                       <h4 className="text-lg font-medium">{member.name}</h4>
-                      <p className="text-sm text-muted-foreground">{member.role}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {member.role}
+                      </p>
                     </div>
                   </FuturisticCard>
                 </motion.div>
@@ -194,7 +267,9 @@ export default function Home() {
         {/* Our Car Section - Enhanced with interactive 3D car */}
         <section id="ourcar" className="py-20">
           <div className="container">
-            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">Our Car</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">
+              Our Car
+            </h2>
 
             <div className="mb-12">
               <div className="flex justify-center mb-6">
@@ -202,7 +277,9 @@ export default function Home() {
                   <button
                     onClick={() => setActiveTab("view")}
                     className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                      activeTab === "view" ? "bg-primary text-primary-foreground" : "hover:bg-primary/10"
+                      activeTab === "view"
+                        ? "bg-primary text-primary-foreground"
+                        : "hover:bg-primary/10"
                     }`}
                   >
                     View Car
@@ -210,7 +287,9 @@ export default function Home() {
                   <button
                     onClick={() => setActiveTab("specs")}
                     className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                      activeTab === "specs" ? "bg-primary text-primary-foreground" : "hover:bg-primary/10"
+                      activeTab === "specs"
+                        ? "bg-primary text-primary-foreground"
+                        : "hover:bg-primary/10"
                     }`}
                   >
                     Specifications
@@ -224,34 +303,44 @@ export default function Home() {
                     <div>
                       <h3 className="text-2xl font-bold mb-6">NOS-X1 Racer</h3>
                       <p className="text-lg text-muted-foreground mb-8">
-                        Engineered for speed and precision, our car represents the pinnacle of our team's innovation and
-                        technical expertise.
+                        Engineered for speed and precision, our car represents
+                        the pinnacle of our team's innovation and technical
+                        expertise.
                       </p>
                       <ul className="space-y-4 mb-8">
                         <li className="flex items-start gap-3">
                           <Shield className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                           <div>
-                            <h3 className="font-medium">Lightweight Materials</h3>
+                            <h3 className="font-medium">
+                              Lightweight Materials
+                            </h3>
                             <p className="text-muted-foreground">
-                              Carbon fiber and advanced composites for optimal weight-to-strength ratio
+                              Carbon fiber and advanced composites for optimal
+                              weight-to-strength ratio
                             </p>
                           </div>
                         </li>
                         <li className="flex items-start gap-3">
                           <Zap className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                           <div>
-                            <h3 className="font-medium">Aerodynamic Bodywork</h3>
+                            <h3 className="font-medium">
+                              Aerodynamic Bodywork
+                            </h3>
                             <p className="text-muted-foreground">
-                              CFD-optimized design to minimize drag and maximize downforce
+                              CFD-optimized design to minimize drag and maximize
+                              downforce
                             </p>
                           </div>
                         </li>
                         <li className="flex items-start gap-3">
                           <Gauge className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                           <div>
-                            <h3 className="font-medium">Precision Manufacturing</h3>
+                            <h3 className="font-medium">
+                              Precision Manufacturing
+                            </h3>
                             <p className="text-muted-foreground">
-                              CNC machined components with tolerances measured in microns
+                              CNC machined components with tolerances measured
+                              in microns
                             </p>
                           </div>
                         </li>
@@ -262,7 +351,7 @@ export default function Home() {
                     </div>
                     <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
                       <Image
-                        src="/placeholder.svg?height=400&width=600"
+                        src="/team/car.png"
                         alt="Team NOS Racing Car"
                         fill
                         className="object-cover"
@@ -279,25 +368,37 @@ export default function Home() {
 
                 {activeTab === "specs" && (
                   <div className="max-w-3xl mx-auto">
-                    <h3 className="text-2xl font-bold mb-6 text-center">Technical Specifications</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-center">
+                      Technical Specifications
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <FuturisticCard>
-                        <h4 className="text-lg font-medium mb-4">Performance</h4>
+                        <h4 className="text-lg font-medium mb-4">
+                          Performance
+                        </h4>
                         <ul className="space-y-2">
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Top Speed</span>
+                            <span className="text-muted-foreground">
+                              Top Speed
+                            </span>
                             <span className="font-medium">78 km/h</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Acceleration</span>
+                            <span className="text-muted-foreground">
+                              Acceleration
+                            </span>
                             <span className="font-medium">0-20m in 1.2s</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Reaction Time</span>
-                            <span className="font-medium">0.15s</span>
+                            <span className="text-muted-foreground">
+                              Reaction Time
+                            </span>
+                            <span className="font-medium">0.26s</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Race Distance</span>
+                            <span className="text-muted-foreground">
+                              Race Distance
+                            </span>
                             <span className="font-medium">20m</span>
                           </li>
                         </ul>
@@ -307,11 +408,15 @@ export default function Home() {
                         <h4 className="text-lg font-medium mb-4">Physical</h4>
                         <ul className="space-y-2">
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Weight</span>
-                            <span className="font-medium">55g</span>
+                            <span className="text-muted-foreground">
+                              Weight
+                            </span>
+                            <span className="font-medium">51g</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Length</span>
+                            <span className="text-muted-foreground">
+                              Length
+                            </span>
                             <span className="font-medium">210mm</span>
                           </li>
                           <li className="flex justify-between">
@@ -319,7 +424,9 @@ export default function Home() {
                             <span className="font-medium">85mm</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Height</span>
+                            <span className="text-muted-foreground">
+                              Height
+                            </span>
                             <span className="font-medium">65mm</span>
                           </li>
                         </ul>
@@ -330,15 +437,17 @@ export default function Home() {
                         <ul className="space-y-2">
                           <li className="flex justify-between">
                             <span className="text-muted-foreground">Body</span>
-                            <span className="font-medium">Carbon Fiber</span>
-                          </li>
-                          <li className="flex justify-between">
-                            <span className="text-muted-foreground">Wheels</span>
                             <span className="font-medium">Polyurethane</span>
                           </li>
                           <li className="flex justify-between">
+                            <span className="text-muted-foreground">
+                              Wheels
+                            </span>
+                            <span className="font-medium">Abs</span>
+                          </li>
+                          <li className="flex justify-between">
                             <span className="text-muted-foreground">Axles</span>
-                            <span className="font-medium">Titanium Alloy</span>
+                            <span className="font-medium">Abs</span>
                           </li>
                         </ul>
                       </FuturisticCard>
@@ -347,16 +456,24 @@ export default function Home() {
                         <h4 className="text-lg font-medium mb-4">Design</h4>
                         <ul className="space-y-2">
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Drag Coefficient</span>
-                            <span className="font-medium">0.18</span>
+                            <span className="text-muted-foreground">
+                              Drag Coefficient
+                            </span>
+                            <span className="font-medium">0.2</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Downforce</span>
+                            <span className="text-muted-foreground">
+                              Drag
+                            </span>
                             <span className="font-medium">0.8N</span>
                           </li>
                           <li className="flex justify-between">
-                            <span className="text-muted-foreground">Design Software</span>
-                            <span className="font-medium">Autodesk Fusion 360</span>
+                            <span className="text-muted-foreground">
+                              Design Software
+                            </span>
+                            <span className="font-medium">
+                              Autodesk Fusion 360
+                            </span>
                           </li>
                         </ul>
                       </FuturisticCard>
@@ -371,17 +488,20 @@ export default function Home() {
         {/* Speed Test Game Section */}
         <section id="speedtest" className="py-20 bg-muted/50">
           <div className="container">
-            <h2 className="text-3xl font-bold tracking-tight mb-6 text-center">Test Your Reaction Speed</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-6 text-center">
+              Test Your Reaction Speed
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 text-center">
-              F1 drivers need lightning-fast reflexes. See how your reaction time compares to the pros!
+              F1 drivers need lightning-fast reflexes. See how your reaction
+              time compares to the pros!
             </p>
 
             <SpeedTest />
 
             <div className="mt-12 text-center">
               <p className="text-sm text-muted-foreground max-w-md mx-auto">
-                Professional F1 drivers have reaction times as low as 150ms. The average person's reaction time is
-                between 200-300ms.
+                Professional F1 drivers have reaction times as low as 150ms. The
+                average person's reaction time is between 200-300ms.
               </p>
             </div>
           </div>
@@ -390,10 +510,13 @@ export default function Home() {
         {/* Sponsorship Section */}
         <section id="sponsors" className="py-20">
           <div className="container text-center">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Partner With Us!</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">
+              Partner With Us!
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Join Team NOS Racing as a sponsor and be part of our journey to the world finals. Your support helps us
-              innovate and compete at the highest level.
+              Join Team NOS Racing as a sponsor and be part of our journey to
+              the world finals. Your support helps us innovate and compete at
+              the highest level.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-10">
               <motion.div
@@ -407,7 +530,9 @@ export default function Home() {
                     <CardTitle>Brand Exposure</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p>Your logo on our car, uniforms, and marketing materials</p>
+                    <p>
+                      Your logo on our car, uniforms, and marketing materials
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -423,7 +548,10 @@ export default function Home() {
                     <CardTitle>Media Coverage</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p>Visibility in competitions, social media, and press releases</p>
+                    <p>
+                      Visibility in competitions, social media, and press
+                      releases
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -439,7 +567,9 @@ export default function Home() {
                     <CardTitle>STEM Support</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p>Demonstrate your commitment to education and innovation</p>
+                    <p>
+                      Demonstrate your commitment to education and innovation
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -455,21 +585,27 @@ export default function Home() {
         {/* Contact Us Section */}
         <section id="contact" className="py-20 bg-muted/50">
           <div className="container">
-            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">Contact Us</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">
+              Contact Us
+            </h2>
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
               <div className="space-y-6">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Location</h3>
-                    <p className="text-muted-foreground">Ryan International School chembur</p>
+                    <p className="text-muted-foreground">
+                      Ryan International School chembur
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-muted-foreground">nosofficialindia1@gmail.com</p>
+                    <p className="text-muted-foreground">
+                      nosofficialindia1@gmail.com
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -537,13 +673,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
-              <Map />
-</div>
-
-
-
-
-
+                <Map />
+              </div>
             </div>
           </div>
         </section>
@@ -565,6 +696,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
-
